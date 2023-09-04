@@ -34,8 +34,24 @@
     "email": "thallesgabriel1307@gmail.com"
   },
   "scripts": {
-    "test": "jest",
-    "editorconfig": "editorconfig-checker"
+    "start": "node dist/src/main/index.js",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --clear --exit-child --rs --no-notify .",
+    "build": "rimraf dist && tsc -p tsconfig-build.json && resolve-tspaths",
+    "build:watch": "rimraf dist && tsc -p tsconfig-build.json -w && resolve-tspaths",
+    "check": "npm-check -u",
+    "check:production": "npm-check -u -p",
+    "editorconfig": "editorconfig-checker",
+    "style": "prettier --ignore-path .gitignore --check **/*.ts",
+    "style:fix": "prettier --ignore-path .gitignore --write **/*.ts",
+    "lint": "eslint --ignore-path .gitignore src tests --ext .ts",
+    "lint:fix": "eslint --ignore-path .gitignore src --ext .ts --fix",
+    "test": "jest --passWithNoTests --noStackTrace --runInBand --no-cache --testTimeout=10000",
+    "test:ci": "pnpm test -- --coverage --silent",
+    "test:unit": "pnpm test -- -c jest-unit-config.js",
+    "test:unit:watch": "pnpm test -- --watch  --findRelatedTests tests -c jest-unit-config.js",
+    "test:integration": "pnpm test -- --watch -c jest-integration-config.js",
+    "test:staged": "pnpm test -- --findRelatedTests tests",
+    "husky": "husky install"
   },
   "engines": {
     "node": ">=18",
@@ -57,6 +73,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "jest": "^29.6.4",
+    "npm-check": "^6.0.1",
     "prettier": "^3.0.3",
     "resolve-tspaths": "^0.8.15",
     "rimraf": "^5.0.1",
