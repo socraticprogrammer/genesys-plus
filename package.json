@@ -1,0 +1,45 @@
+{
+  "name": "genesys-plus",
+  "version": "0.0.0",
+  "description": "Application extends functions currently present in Genesys Cloud.",
+  "main": "src/main/index.ts",
+  "private": "true",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/socraticprogrammer/genesys-plus#readme",
+  "keywords": [
+    "clean architecture",
+    "clean code",
+    "tdd",
+    "ddd",
+    "solid",
+    "design patterns",
+    "node",
+    "javascript",
+    "jest",
+    "typescript",
+    "js",
+    "ts"
+  ],
+  "author": {
+    "name": "Thalles Lossurdo",
+    "email": "thallesgabriel1307@gmail.com",
+    "url": "https://bit.ly/thalles-lossurdo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/socraticprogrammer/genesys-plus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/socraticprogrammer/genesys-plus/issues",
+    "email": "thallesgabriel1307@gmail.com"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=8",
+    "yarn": ">=1.22.x",
+    "pnpm": ">=7"
+  }
+}
