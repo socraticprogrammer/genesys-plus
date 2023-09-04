@@ -41,5 +41,8 @@
     "npm": ">=8",
     "yarn": ">=1.22.x",
     "pnpm": ">=7"
+  },
+  "devDependencies": {
+    "eslint": "^8.48.0"
   }
 }
