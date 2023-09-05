@@ -1,14 +1,17 @@
 import platformClient, { ApiClientClass, RoutingApi } from 'purecloud-platform-client-v2'
 
+import { env } from '@/main/config/env'
+
 export class PlatformClient {
-  private readonly CLIENT_ID = ''
-  private readonly CLIENT_SECRET = ''
+  private readonly CLIENT_ID = env.CLIENT_ID
+  private readonly CLIENT_SECRET = env.CLIENT_SECRET
+  private readonly REGION = env.REGION
   private instance: ApiClientClass | undefined
   private routingApi: RoutingApi | undefined
 
   async setup(): Promise<void> {
     this.instance = platformClient.ApiClient.instance
-    this.instance.setEnvironment('us-east-1')
+    this.instance.setEnvironment(this.REGION)
     this.routingApi = new platformClient.RoutingApi()
     await this.instance.loginClientCredentialsGrant(this.CLIENT_ID, this.CLIENT_SECRET)
   }
