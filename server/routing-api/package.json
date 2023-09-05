@@ -87,5 +87,8 @@
     "npm": ">=8",
     "yarn": ">=1.22.x",
     "pnpm": ">=7"
+  },
+  "dependencies": {
+    "purecloud-platform-client-v2": "^173.1.0"
   }
 }
