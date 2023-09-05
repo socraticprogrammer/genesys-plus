@@ -3,9 +3,9 @@ import platformClient, { ApiClientClass, RoutingApi } from 'purecloud-platform-c
 import { env } from '@/main/config/env'
 
 export class PlatformClient {
-  private readonly CLIENT_ID = env.CLIENT_ID
-  private readonly CLIENT_SECRET = env.CLIENT_SECRET
-  private readonly REGION = env.REGION
+  private readonly CLIENT_ID = env.GENESYS_CLIENT_ID
+  private readonly CLIENT_SECRET = env.GENESYS_CLIENT_SECRET
+  private readonly REGION = env.GENESYS_REGION
   private instance: ApiClientClass | undefined
   private routingApi: RoutingApi | undefined
 
