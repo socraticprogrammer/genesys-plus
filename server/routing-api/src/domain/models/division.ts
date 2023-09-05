@@ -1,5 +1,5 @@
 export interface Division {
-  id: string
-  name: string
+  id?: string
+  name?: string
   selfUri?: string
 }
