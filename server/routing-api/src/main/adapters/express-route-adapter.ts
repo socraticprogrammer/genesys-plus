@@ -10,7 +10,7 @@ interface ErrorResult {
 }
 
 type AdapterRequest = Request & {
-  file: any
+  file?: any
 }
 
 export type ExpressController = (req: AdapterRequest, res: Response) => Promise<any>
