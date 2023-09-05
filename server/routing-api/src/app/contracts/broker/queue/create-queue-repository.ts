@@ -1,8 +1,9 @@
-import { CreateQueue } from '@/domain/usecases'
+import { Queue } from '@/domain/models'
+import { CreateQueues } from '@/domain/usecases'
 
 export namespace CreateQueueRepository {
-  export type DTO = Omit<CreateQueue.Params, 'name'> & Required<Pick<CreateQueue.Params, 'name'>>
-  export type Result = CreateQueue.Result
+  export type DTO = CreateQueues.CreateQueueDTO
+  export type Result = Queue
   export interface Repository {
     create(dto: DTO): Promise<Result>
   }
