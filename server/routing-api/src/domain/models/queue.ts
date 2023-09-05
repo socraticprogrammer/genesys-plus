@@ -44,6 +44,7 @@ export interface Queue {
   outboundEmailAddress?: QueueEmailAddress
   peerId?: string
   suppressInQueueCallRecording?: boolean
+  sourceQueueId?: string
   selfUri?: string
 }
 
