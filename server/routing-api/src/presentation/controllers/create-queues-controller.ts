@@ -16,7 +16,8 @@ export class CreateQueueController implements Gateway {
       const error = this.validation.validate(request)
       if (error) return badRequest(error)
 
-      await this.requestAdapter.adapt(request)
+      const requestFormatted = await this.requestAdapter.adapt(request)
+      await this.createQueues.create(requestFormatted)
 
       return noContent()
     } catch (error) {

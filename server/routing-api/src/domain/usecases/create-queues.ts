@@ -5,7 +5,7 @@ export interface CreateQueues {
 }
 
 export namespace CreateQueues {
-  export type CreateQueueDTO = Omit<Queue, 'name'> & Required<Pick<Queue, 'name'>>
+  export type CreateQueueDTO = Partial<Omit<Queue, 'name'>> & Required<Pick<Queue, 'name'>>
 
   export type Params = CreateQueueDTO[]
 
