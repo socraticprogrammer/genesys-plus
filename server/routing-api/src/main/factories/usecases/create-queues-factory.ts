@@ -1,5 +1,6 @@
 import { BrokerCreateQueues } from '@/app/services'
 
-import { makeQueueGenesysRepository } from '../broker'
+import { makePlatformClient, makeQueueGenesysRepository } from '../broker'
 
-export const makeCreateQueues = () => new BrokerCreateQueues(makeQueueGenesysRepository())
+export const makeCreateQueues = () =>
+  new BrokerCreateQueues(makePlatformClient(), makeQueueGenesysRepository())
