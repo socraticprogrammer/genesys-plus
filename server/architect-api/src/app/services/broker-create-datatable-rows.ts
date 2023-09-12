@@ -9,9 +9,14 @@ export class BrokerCreateDataTableRows implements CreateDataTableRows {
     private readonly dataTableRepository: CreateDataTableRowRepository.Repository
   ) {}
 
-  async create(params: CreateDataTableRows.Params): Promise<CreateDataTableRows.Result> {
+  async create({
+    rows,
+    datatableId
+  }: CreateDataTableRows.Params): Promise<CreateDataTableRows.Result> {
     await this.platformClient.setup()
-    if (!params?.length) return []
-    return await Promise.all(params.map(row => this.dataTableRepository.createRow(row)))
+    if (!rows?.length) return []
+    return await Promise.all(
+      rows.map(row => this.dataTableRepository.createRow({ datatableId, row }))
+    )
   }
 }

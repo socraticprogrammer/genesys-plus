@@ -5,12 +5,13 @@ import { PlatformClient } from './platform-client'
 export class DataTableGenesysRepository implements CreateDataTableRowRepository.Repository {
   private readonly architectApi = new PlatformClient().getArchitectApi()
 
-  async createRow(
-    dto: CreateDataTableRowRepository.DTO
-  ): Promise<CreateDataTableRowRepository.Result> {
+  async createRow({
+    row,
+    datatableId
+  }: CreateDataTableRowRepository.DTO): Promise<CreateDataTableRowRepository.Result> {
     return (await this.architectApi.postFlowsDatatableRows(
-      dto[0],
-      dto
+      datatableId,
+      row
     )) as unknown as CreateDataTableRowRepository.Result
   }
 }
