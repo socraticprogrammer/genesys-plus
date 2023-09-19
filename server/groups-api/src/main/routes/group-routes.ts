@@ -6,7 +6,7 @@ import { makeAddMembersInGroupRoute, makeListGroupsRoute } from '../factories/ro
 const upload = multer()
 
 export default (router: Router): void => {
-  router.post('/groups/:groupId', upload.single('file'), makeAddMembersInGroupRoute())
+  router.post('/groups/:groupId/members', upload.single('file'), makeAddMembersInGroupRoute())
   router.get('/groups', makeListGroupsRoute())
   router.get('/groups/export', makeListGroupsRoute(true))
 }
