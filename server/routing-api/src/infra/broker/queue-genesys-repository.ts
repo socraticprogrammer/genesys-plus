@@ -1,6 +1,7 @@
 import { CreateQueueRepository, ListQueuesRepository } from '@/app/contracts'
 
 import { PlatformClient } from './platform-client'
+import { formatListQueuesResponse } from './utils'
 
 export class QueueGenesysRepository
   implements CreateQueueRepository.Repository, ListQueuesRepository.Repository
@@ -26,7 +27,7 @@ export class QueueGenesysRepository
     })
 
     return {
-      entities: result?.entities ?? [],
+      entities: result?.entities?.length ? formatListQueuesResponse(result.entities) : [],
       pageCount: result?.pageCount ?? 0,
       pageNumber: result?.pageNumber ?? 0,
       pageSize: result?.pageSize ?? 0
