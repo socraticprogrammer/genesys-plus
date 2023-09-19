@@ -35,7 +35,10 @@ export const adaptStreamRoute =
 
     res.set('Content-Encoding', 'base64')
     res.set('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    res.set('Content-Disposition', 'attachment; filename=videos.xlsx')
+    res.set(
+      'Content-Disposition',
+      `attachment; filename=${httpResponse?.body?.fileName ?? 'data'}.xlsx`
+    )
 
     return readStream.pipe(res)
   }

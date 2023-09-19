@@ -12,7 +12,8 @@ export class ListQueueController implements Gateway {
 
       return ok({
         data: result,
-        total: result?.length ?? 0
+        total: result?.length ?? 0,
+        fileName: 'queues'
       })
     } catch (error) {
       console.error(error)
