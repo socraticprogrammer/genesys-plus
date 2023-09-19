@@ -1,5 +1,4 @@
 import { CreateQueueRepository, ListQueuesRepository } from '@/app/contracts'
-import { ListQueues } from '@/domain/usecases'
 
 import { PlatformClient } from './platform-client'
 
