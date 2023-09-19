@@ -1,6 +1,5 @@
 import { WorkBook } from 'xlsx'
 
-export interface SheetClient {
-  convertBufferToWorkbook(params: Buffer): WorkBook
+export interface ConvertWorkbookToJson {
   convertWorkbookToJson<T>(params: WorkBook): T[]
 }

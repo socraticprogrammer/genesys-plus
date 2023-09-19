@@ -1,1 +1,6 @@
-export * from './sheet-client'
+export * from './append-sheet-in-book'
+export * from './convert-buffer-to-workbook'
+export * from './convert-json-to-sheet'
+export * from './convert-workbook-to-json'
+export * from './create-workbook'
+export * from './write-worbook-to-buffer'
