@@ -1,8 +1,17 @@
 import { ListQueues } from '@/domain/usecases'
 
 export namespace ListQueuesRepository {
-  export type Result = ListQueues.Result
+  export interface DTO {
+    pageSize: number
+    pageNumber: number
+  }
+  export interface Result {
+    pageSize: number
+    pageNumber: number
+    pageCount: number
+    entities: ListQueues.Result
+  }
   export interface Repository {
-    list(): Promise<Result>
+    list(dto: DTO): Promise<Result>
   }
 }
