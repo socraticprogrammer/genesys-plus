@@ -6,6 +6,11 @@ export class QueueGenesysRepository implements CreateQueueRepository.Repository 
   private readonly routingApi = new PlatformClient().getRoutingApi()
 
   async create(dto: CreateQueueRepository.DTO): Promise<CreateQueueRepository.Result> {
-    return await this.routingApi.postRoutingQueues(dto)
+    try {
+      const queue = await this.routingApi.postRoutingQueues(dto)
+      return queue
+    } catch (error) {
+      console.error(error)
+    }
   }
 }

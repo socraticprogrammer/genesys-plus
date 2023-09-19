@@ -12,6 +12,7 @@ export class BrokerCreateQueues implements CreateQueues {
   async create(params: CreateQueues.Params): Promise<CreateQueues.Result> {
     await this.platformClient.setup()
     if (!params?.length) return []
-    return await Promise.all(params.map(queue => this.queueRepository.create(queue)))
+    const queuesCreated = await Promise.all(params.map(queue => this.queueRepository.create(queue)))
+    return queuesCreated.filter(queueCreated => Boolean(queueCreated)) as CreateQueues.Result
   }
 }
