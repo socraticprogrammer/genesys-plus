@@ -3,6 +3,7 @@ import { PlatformClient } from '@/infra/broker'
 
 import { ListUsersRepository } from '../contracts'
 import { listUsersWithPagination } from './helpers'
+import { filterUsersWithEmails } from './helpers/response-helper'
 
 export class BrokerListUsers implements ListUsers {
   private readonly INITIAL_PAGE = 1
@@ -13,7 +14,7 @@ export class BrokerListUsers implements ListUsers {
     private readonly UserRepository: ListUsersRepository.Repository
   ) {}
 
-  async list(): Promise<ListUsers.Result> {
+  async list(params?: ListUsers.Params): Promise<ListUsers.Result> {
     await this.platformClient.setup()
     const users: ListUsers.Result = []
     const fetchUsers = listUsersWithPagination(this.UserRepository)
@@ -25,6 +26,8 @@ export class BrokerListUsers implements ListUsers {
       users.push(...data)
     }
 
-    return users
+    return params?.usersEmails?.length
+      ? filterUsersWithEmails(users, params?.usersEmails ?? [])
+      : users
   }
 }

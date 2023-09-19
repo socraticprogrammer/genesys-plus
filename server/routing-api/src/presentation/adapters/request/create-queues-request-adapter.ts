@@ -1,10 +1,10 @@
-import { SheetClient } from '@/app/contracts'
+import { ConvertBufferToWorkbook, ConvertWorkbookToJson } from '@/app/contracts'
 import { RequestAdapter } from '@/app/contracts/adapters'
 import { CreateQueues } from '@/domain/usecases'
 import { pipe } from '@/shared/operators'
 
 export class CreateQueuesRequestAdapter implements RequestAdapter<CreateQueues.Params> {
-  constructor(private readonly sheetClient: SheetClient) {}
+  constructor(private readonly sheetClient: ConvertBufferToWorkbook & ConvertWorkbookToJson) {}
 
   async adapt(params: CreateQueuesRequestAdapter.Request): Promise<CreateQueues.Params> {
     const queues = pipe(
