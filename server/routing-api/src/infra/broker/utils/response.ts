@@ -1,5 +1,6 @@
 import { ListQueuesRepository } from '@/app/contracts'
 
 export const formatListQueuesResponse = (
-  queues: ListQueuesRepository.Result['entities']
-): ListQueuesRepository.Result['entities'] => queues.map(({ id, name }) => ({ id, name }))
+  queues: ListQueuesRepository.BrokerResult
+): ListQueuesRepository.Result['entities'] =>
+  queues.map(({ id, name, division }) => ({ id, name, divisionId: division?.id ?? '' }))

@@ -5,5 +5,8 @@ export interface ListQueues {
 }
 
 export namespace ListQueues {
-  export type Result = Pick<Queue, 'id' | 'name'>[]
+  export type QueueWithDivision = Pick<Queue, 'id' | 'name'> & {
+    divisionId: string
+  }
+  export type Result = QueueWithDivision[]
 }

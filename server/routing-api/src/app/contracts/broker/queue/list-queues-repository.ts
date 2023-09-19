@@ -1,3 +1,4 @@
+import { Queue } from '@/domain/models'
 import { ListQueues } from '@/domain/usecases'
 
 export namespace ListQueuesRepository {
@@ -5,6 +6,7 @@ export namespace ListQueuesRepository {
     pageSize: number
     pageNumber: number
   }
+  export type BrokerResult = Pick<Queue, 'name' | 'id' | 'division'>[]
   export interface Result {
     pageSize: number
     pageNumber: number
