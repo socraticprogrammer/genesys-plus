@@ -86,6 +86,13 @@ export class CreateQueuesRequestAdapter implements RequestAdapter<CreateQueues.P
             ? {
                 sourceQueueId: sourceQueueId.trim()
               }
+            : {}),
+          ...(messageInQueueFlow
+            ? {
+                messageInQueueFlow: {
+                  id: messageInQueueFlow.trim()
+                }
+              }
             : {})
         }
       }
