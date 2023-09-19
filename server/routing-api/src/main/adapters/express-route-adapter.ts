@@ -34,11 +34,12 @@ export const adaptRoute =
 
     const httpResponse = await controller.handle(request)
 
-    return res
-      .status(httpResponse.statusCode)
-      .json(
-        httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299
-          ? httpResponse.body
-          : generateError(httpResponse.body?.error, httpResponse.body?.message)
-      )
+    return res.status(httpResponse.statusCode).json(
+      httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299
+        ? {
+            data: httpResponse.body?.data ?? {},
+            total: httpResponse.body?.total ?? 0
+          }
+        : generateError(httpResponse.body?.error, httpResponse.body?.message)
+    )
   }
