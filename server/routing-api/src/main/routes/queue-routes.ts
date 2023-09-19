@@ -8,4 +8,5 @@ const upload = multer()
 export default (router: Router): void => {
   router.post('/queues', upload.single('file'), makeCreateQueuesRoute())
   router.get('/queues', makeListQueuesRoute())
+  router.get('/queues/export', makeListQueuesRoute(true))
 }
