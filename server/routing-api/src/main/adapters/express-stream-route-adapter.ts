@@ -22,11 +22,11 @@ export const adaptStreamRoute =
 
     const httpResponse = await controller.handle(request)
 
-    if (!httpResponse.body) return res.status(204)
+    if (!httpResponse.body?.data) return res.status(204)
 
     const sheetClient = new XlsxSheetClient()
     const workbook = sheetClient.createWorkbook()
-    const worksheet = sheetClient.convertJsonToSheet(httpResponse.body)
+    const worksheet = sheetClient.convertJsonToSheet(httpResponse.body?.data)
     sheetClient.appendSheetInBook({ workbook, worksheet })
     const buffer = sheetClient.writeWorkbookToBuffer(workbook)
 

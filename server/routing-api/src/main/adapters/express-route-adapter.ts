@@ -13,7 +13,7 @@ type AdapterRequest = Request & {
   file?: any
 }
 
-export type ExpressController = (req: AdapterRequest, res: Response) => Promise<any>
+export type ExpressController<T = any> = (req: AdapterRequest, res: Response) => Promise<T>
 
 const generateError = (type: string, message: string): ErrorResult => ({
   error: {

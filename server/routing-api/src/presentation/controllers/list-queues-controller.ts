@@ -11,7 +11,7 @@ export class ListQueueController implements Gateway {
       const result = await this.listQueues.list()
 
       return ok({
-        queues: result,
+        data: result,
         total: result?.length ?? 0
       })
     } catch (error) {
