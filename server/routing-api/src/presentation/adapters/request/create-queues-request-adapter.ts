@@ -64,7 +64,7 @@ export class CreateQueuesRequestAdapter implements RequestAdapter<CreateQueues.P
         sourceQueueId
       }) => {
         return {
-          name: name.trim(),
+          name: name?.trim(),
           ...(divisionId
             ? {
                 division: {
