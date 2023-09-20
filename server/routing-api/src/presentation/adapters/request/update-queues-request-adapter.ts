@@ -95,6 +95,15 @@ export class UpdateQueuesRequestAdapter implements RequestAdapter<UpdateQueues.P
                   id: messageInQueueFlow.trim()
                 }
               }
+            : {}),
+          ...(messageDefaultScriptId
+            ? {
+                defaultScripts: {
+                  message: {
+                    id: messageDefaultScriptId.trim()
+                  }
+                }
+              }
             : {})
         }
       }
