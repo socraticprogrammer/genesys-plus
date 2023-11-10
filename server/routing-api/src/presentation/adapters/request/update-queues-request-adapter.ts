@@ -67,6 +67,8 @@ export class UpdateQueuesRequestAdapter implements RequestAdapter<UpdateQueues.P
         return {
           id: id?.trim(),
           name: name?.trim(),
+          enableManualAssignment:
+            enableManualAssignment !== undefined ? enableManualAssignment : false,
           ...(divisionId
             ? {
                 division: {
@@ -154,7 +156,7 @@ export namespace UpdateQueuesRequestAdapter {
     onHoldPromptId: string
     autoAnswerOnly: string
     enableTranscription: string
-    enableManualAssignment: string
+    enableManualAssignment: boolean | undefined
     agentOwnedRoutingEnableAgentOwnedCallbacks: string
     agentOwnedRoutingMaxOwnedCallbackHours: string
     agentOwnedRoutingMaxOwnedCallbackDelayHours: string
