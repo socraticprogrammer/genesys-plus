@@ -1,4 +1,9 @@
-import { CreateQueueRepository, ListQueuesRepository, UpdateQueueRepository } from '@/app/contracts'
+import {
+  CreateQueueRepository,
+  DeleteQueueRepository,
+  ListQueuesRepository,
+  UpdateQueueRepository
+} from '@/app/contracts'
 
 import { PlatformClient } from './platform-client'
 import { formatListQueuesResponse } from './utils'
@@ -7,7 +12,8 @@ export class QueueGenesysRepository
   implements
     CreateQueueRepository.Repository,
     ListQueuesRepository.Repository,
-    UpdateQueueRepository.Repository
+    UpdateQueueRepository.Repository,
+    DeleteQueueRepository.Repository
 {
   private readonly routingApi = new PlatformClient().getRoutingApi()
 
@@ -24,6 +30,14 @@ export class QueueGenesysRepository
     try {
       const queue = await this.routingApi.putRoutingQueue(id, dto)
       return queue
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async delete({ id }: DeleteQueueRepository.DTO): Promise<DeleteQueueRepository.Result> {
+    try {
+      await this.routingApi.deleteRoutingQueue(id)
     } catch (error) {
       console.error(error)
     }
