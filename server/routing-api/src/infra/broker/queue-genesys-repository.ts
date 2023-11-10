@@ -37,7 +37,7 @@ export class QueueGenesysRepository
 
   async delete({ id }: DeleteQueueRepository.DTO): Promise<DeleteQueueRepository.Result> {
     try {
-      await this.routingApi.deleteRoutingQueue(id)
+      await this.routingApi.deleteRoutingQueue(id, { forceDelete: true })
     } catch (error) {
       console.error(error)
     }
