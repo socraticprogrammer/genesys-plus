@@ -1,7 +1,7 @@
 {
   "name": "genesys-plus",
   "version": "0.0.0",
-  "description": "CLI Application that extends the current recourses in Genesys Cloud.",
+  "description": "CLI application that extends the currently recourses in Genesys Cloud.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
