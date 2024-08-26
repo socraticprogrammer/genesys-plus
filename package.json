@@ -1,0 +1,33 @@
+{
+  "name": "genesys-plus",
+  "version": "0.0.0",
+  "description": "CLI Application that extends the current recourses in Genesys Cloud.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/socraticprogrammer/genesys-plus.git"
+  },
+  "keywords": [
+    "genesys cloud",
+    "genesys",
+    "nodejs",
+    "javascript",
+    "js",
+    "ts",
+    "typescript",
+    "cli"
+  ],
+  "author": {
+    "name": "Thalles Lossurdo",
+    "email": "thallesgabriel1307@gmail.com",
+    "url": "https://bit.ly/thalles-lossurdo"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/socraticprogrammer/genesys-plus/issues"
+  },
+  "homepage": "https://github.com/socraticprogrammer/genesys-plus#readme"
+}
