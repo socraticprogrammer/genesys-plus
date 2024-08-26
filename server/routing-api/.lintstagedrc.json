@@ -1,3 +1,0 @@
-{
-  "*.{js,ts}": ["pnpm style:fix", "pnpm test:staged"]
-}
