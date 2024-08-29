@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/socraticprogrammer/genesys-plus/issues"
   },
-  "homepage": "https://github.com/socraticprogrammer/genesys-plus#readme"
+  "homepage": "https://github.com/socraticprogrammer/genesys-plus#readme",
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
 }
