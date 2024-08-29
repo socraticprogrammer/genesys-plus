@@ -3,11 +3,13 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^19.4.1
   '@commitlint/config-conventional': ^19.4.1
+  husky: ^9.1.5
   typescript: ^5.5.4
 
 devDependencies:
   '@commitlint/cli': 19.4.1_typescript@5.5.4
   '@commitlint/config-conventional': 19.4.1
+  husky: 9.1.5
   typescript: 5.5.4
 
 packages:
@@ -477,6 +479,12 @@ packages:
   /human-signals/5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
+    dev: true
+
+  /husky/9.1.5:
+    resolution: {integrity: sha512-rowAVRUBfI0b4+niA4SJMhfQwc107VLkBUgEYYAOQAbqDCnra1nYh83hF/MDmhYs9t9n1E3DuKOrs2LYNC+0Ag==}
+    engines: {node: '>=18'}
+    hasBin: true
     dev: true
 
   /import-fresh/3.3.0:
