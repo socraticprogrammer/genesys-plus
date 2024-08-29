@@ -1,13 +1,19 @@
 {
-  "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
+    "lib": ["es2023"],
+    "module": "node16",
+    "target": "es2022",
+    "moduleResolution": "node16",
     "rootDir": ".",
     "outDir": "build/",
-    "outFile": "./tsc.js",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
+    "allowJs": true,
     "forceConsistentCasingInFileNames": true
   },
   "paths": {
