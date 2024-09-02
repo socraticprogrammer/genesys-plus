@@ -1,29 +1,17 @@
 import wrapUps from "../docs/wraps-kabum.json";
 import queues from "../docs/queues-kabum.json";
 import axios from "axios";
+import { authenticate } from "./auth";
 
 const KABUM_CLIENT_ID = "5e76adce-a2f6-4398-b05c-bb694c3a99ee";
 const KABUM_CLIENT_SECRET = "g3i7r7KAyzKqC3IZ0r_FjUoNqS3mYFiH_uqp_ONg4_Y";
 
 export async function associateWrapupsToQueues() {
   try {
-    const {
-      data: { access_token: accessToken },
-    } = await axios.post(
-      "https://login.mypurecloud.com/oauth/token",
-      {
-        grant_type: "client_credentials",
-      },
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: `Basic ${Buffer.from(
-            `${KABUM_CLIENT_ID}:${KABUM_CLIENT_SECRET}`
-          ).toString("base64")}`,
-        },
-      }
+    const accessToken = await authenticate(
+      KABUM_CLIENT_ID,
+      KABUM_CLIENT_SECRET
     );
-
     console.info(`[TOKEN] ${accessToken}`);
 
     const wrapUpsWithIdentifier = [];
@@ -83,50 +71,55 @@ export async function associateWrapupsToQueues() {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
-      );
-
-      for (const wrapUpFromQueue of wrapUpsFromQueueEntities) {
-        const { status, data } = await axios.delete(
-          `https://api.mypurecloud.com/api/v2/routing/queues/${queueId}/wrapupcodes/${wrapUpFromQueue.id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-
-        if (status < 200 || status > 299) {
-          throw data;
-        }
-
-        console.info(
-          `[WRAP UPS] ${wrapUpFromQueue.name} removed of ${queueName}.`
-        );
-      }
-
-      if (!wrapUpsWithIdentifier.every(({ id }) => id)) {
-        console.warn(`[WRAPUPS] Any wrapup founded.`);
-        return;
-      }
-
-      const { status, data } = await axios.post(
-        `https://api.mypurecloud.com/api/v2/routing/queues/${queueId}/wrapupcodes`,
-        wrapUpsWithIdentifier.map(({ id }) => ({ id })),
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
+          params: {
+            pageSize: 200,
           },
         }
       );
 
-      if (status < 200 || status > 299) {
-        throw data;
-      }
+      console.info(`[WRAPUPS] ${wrapUpsFromQueueEntities.length} founded.`);
 
-      console.info(
-        `[WRAP UPS] ${wrapUpsWithIdentifier.length} added to ${queueName}.`
-      );
+      //   for (const wrapUpFromQueue of wrapUpsFromQueueEntities) {
+      //     const { status, data } = await axios.delete(
+      //       `https://api.mypurecloud.com/api/v2/routing/queues/${queueId}/wrapupcodes/${wrapUpFromQueue.id}`,
+      //       {
+      //         headers: {
+      //           Authorization: `Bearer ${accessToken}`,
+      //         },
+      //       }
+      //     );
+
+      //     if (status < 200 || status > 299) {
+      //       throw data;
+      //     }
+
+      //     console.info(
+      //       `[WRAP UPS] ${wrapUpFromQueue.name} removed of ${queueName}.`
+      //     );
+      //   }
+
+      //   if (!wrapUpsWithIdentifier.every(({ id }) => id)) {
+      //     console.warn(`[WRAPUPS] Any wrapup founded.`);
+      //     return;
+      //   }
+
+      //   const { status, data } = await axios.post(
+      //     `https://api.mypurecloud.com/api/v2/routing/queues/${queueId}/wrapupcodes`,
+      //     wrapUpsWithIdentifier.map(({ id }) => ({ id })),
+      //     {
+      //       headers: {
+      //         Authorization: `Bearer ${accessToken}`,
+      //       },
+      //     }
+      //   );
+
+      //   if (status < 200 || status > 299) {
+      //     throw data;
+      //   }
+
+      //   console.info(
+      //     `[WRAP UPS] ${wrapUpsWithIdentifier.length} added to ${queueName}.`
+      //   );
     }
   } catch (error) {
     console.error(error);
