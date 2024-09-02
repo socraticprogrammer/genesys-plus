@@ -4,6 +4,7 @@
   "description": "CLI application that extends the currently recourses in Genesys Cloud.",
   "main": "index.js",
   "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --clear --exit-child --rs --no-notify ./src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky"
   },
@@ -34,7 +35,12 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
+    "@types/node": "^22.5.2",
     "husky": "^9.1.5",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "axios": "^1.7.7"
   }
 }

@@ -1,0 +1,9 @@
+[
+  { "queueName": "E-mail - Entrega" },
+  { "queueName": "E-mail - Pagamento e Estorno" },
+  { "queueName": "E-mail - Cancelamento" },
+  { "queueName": "E-mail - Pedido" },
+  { "queueName": "E-mail - Retira MagaLu" },
+  { "queueName": "E-mail - Status do Protocolo" },
+  { "queueName": "E-mail - Cadastro" }
+]
